@@ -61,7 +61,7 @@ public class TransactionsLogFile {
             //exec query
             myRs = myStmnt.executeQuery(selectAllTrans);
             while (myRs.next()) {
-                data.append("On " + myRs.getString("date") + " " + myRs.getString("fromm") + " " + myRs.getString("action") + " " + myRs.getString("adverb") +
+                data.append("On " + myRs.getString("date") + " " + myRs.getString("fromm") + " " + myRs.getString("action") + 
                     " " + myRs.getString("tom") + " " + myRs.getString("amount"));
                 data.append("\n");
             }
