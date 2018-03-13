@@ -50,7 +50,7 @@ public class MainMenu {
             setType(type);
             try {
                 int i = 1;
-                System.out.println("Welcome back " + currentname + " " + type);
+                System.out.println("Welcome back " + currentname + " " );
 
                 //display menu
                 for (String option: setDisplayOptions(type)) {
@@ -68,7 +68,6 @@ public class MainMenu {
         }
     
      private static String[] setDisplayOptions(String type) {
-         System.out.println(type);
         if (type.equalsIgnoreCase("user")) return options = new String[] {
             "Display balance for " + getCurrentname(),
             "Deposit",

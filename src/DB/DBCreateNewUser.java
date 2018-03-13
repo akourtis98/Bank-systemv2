@@ -9,6 +9,7 @@ import static DB.DatabaseConnection.conn;
 import static DB.DatabaseConnection.prprdstmnt;
 import java.sql.SQLException;
 import static DB.DatabaseConnection.createUser;
+import static DB.DatabaseConnection.openConnection;
 import java.sql.SQLIntegrityConstraintViolationException;
 
 /**
@@ -19,6 +20,7 @@ public class DBCreateNewUser {
 
     public static boolean create(String uname, String pword) {
         try {
+            openConnection();
             prprdstmnt = conn.prepareStatement(createUser);
             prprdstmnt.setString(1, uname);
             prprdstmnt.setString(2, pword);
@@ -29,6 +31,7 @@ public class DBCreateNewUser {
             return false;
         } catch (SQLException e) {
             System.out.println("connection error");
+            e.printStackTrace();
             return false;
         }
     }

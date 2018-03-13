@@ -33,7 +33,7 @@ public final class DatabaseConnection {
     protected static String removeFrom = "update user set amount = amount - ? where uname = ?";
     protected static String insertAndRemoveD = "update user set amount = amount + ?, cash = cash - ? where uname = ?";
     protected static String insertAndRemoveW = "update user set amount = amount - ?, cash = cash + ? where uname = ?";
-    protected static String createUser = "INSERT INTO user (uname, pword, cash, amount, type) VALUES (?, ?, 0, 1000, \"user\")";
+    protected static String createUser = "INSERT INTO user (uname, pword, amount, type) VALUES (?, ?, 500, \"user\")";
     protected static String loginUserDataCheck = "SELECT uname, pword from user where uname = ? and pword = ?";
     protected static String insertedNameDataCheck = "SELECT uname from user where uname = ? ";
     protected static String loginDataTypeCheck = "SELECT type from user where uname = ?";
