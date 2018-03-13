@@ -6,7 +6,11 @@
 package DB;
 
 import static DB.DatabaseConnection.conn;
+import static DB.DatabaseConnection.insertTransaction;
+import static DB.DatabaseConnection.myrs;
+import static DB.DatabaseConnection.prprdstmnt;
 import static DB.DatabaseConnection.selectAllTrans;
+import static bank.system.Withdraw.getUsrSlctd;
 import java.io.FileNotFoundException;
 import java.io.PrintWriter;
 import java.io.UnsupportedEncodingException;
@@ -26,6 +30,22 @@ public class TransactionsLogFile {
     private static LocalDateTime localDateTime;
     private static StringBuilder data = new StringBuilder();
 
+    public static void writeTransactions(String fromm, String tomm, String action, int amount) throws FileNotFoundException, UnsupportedEncodingException {
+          dtf = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+         localDateTime = localDateTime.now();
+        try {
+            prprdstmnt = conn.prepareStatement(insertTransaction);
+            prprdstmnt.setString(1, fromm);
+            prprdstmnt.setString(2, tomm);
+            prprdstmnt.setString(3, action);
+            prprdstmnt.setInt(4, amount);
+            prprdstmnt.setString(5, dtf.format(localDateTime));
+            prprdstmnt.executeUpdate();
+        } catch (Exception exc) {   
+            System.out.println("error here");
+            exc.printStackTrace();
+        }       
+    }
 
     public static void getTransactions() throws FileNotFoundException, UnsupportedEncodingException {
 
@@ -51,11 +71,11 @@ public class TransactionsLogFile {
             System.out.println("error");
         }
         System.out.println("data: " + "\n" + data);
-        printOutInTxtFile();
+        printOutInTxtFile(data);
     }
 
 
-    private static void printOutInTxtFile() throws FileNotFoundException, UnsupportedEncodingException {
+    private static void printOutInTxtFile(StringBuilder data) throws FileNotFoundException, UnsupportedEncodingException {
         getCurrentDate();
 
         PrintWriter writer = new PrintWriter("Transactions logs/data-for-" + dtf.format(localDateTime) + ".txt", "UTF-8");

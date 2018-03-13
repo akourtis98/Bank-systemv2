@@ -1,0 +1,17 @@
+database name = "databasexyz"
+database_username="root"
+database_password="x"
+
+To log in as admin =>
+	username: "admin", 
+	password: "admin"
+
+To log in as user =>
+	username: "user", 
+	password: "user"
+
+or
+ 
+To log in as user =>
+	username: "user", 
+	password: "user"

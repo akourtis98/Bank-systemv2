@@ -40,6 +40,7 @@ public final class DatabaseConnection {
     protected static String chngUname = "UPDATE user set uname = ? where uname = ?";
     protected static String chngPword = "UPDATE user set pword = ? where uname = ?"; 
     protected static String deleteFromDB = " delete from user where uname = ? and type = 'user' ";
+    protected static String insertTransaction = "INSERT INTO transcations (fromm, tom, action, amount, date) VALUES (?, ?, ?, ?, ?)";
     
     public DatabaseConnection() {}
 

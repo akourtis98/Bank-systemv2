@@ -10,6 +10,7 @@ import static DB.DatabaseConnection.enoughBalanceQuery;
 import static DB.DatabaseConnection.insertInto;
 import static DB.DatabaseConnection.removeFrom;
 import static DB.DatabaseConnection.prprdstmnt;
+import static DB.TransactionsLogFile.writeTransactions;
 import static bank.system.SubLogin.getCurrentname;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -39,10 +40,10 @@ public class DBDeposit {
         try {
             insertTo(userTo, amount);
             removeFrom(userFrom, amount);
+            writeTransactions(userFrom, userTo,"deposited to", amount);
         } catch (Exception exc) {
             exc.printStackTrace();
         }
-
     }
 
     protected static void insertTo(String userTo, int amount) throws SQLException {
@@ -65,7 +66,7 @@ public class DBDeposit {
             prprdstmnt.executeUpdate();
         } catch (Exception exc) {
             exc.printStackTrace();
-            System.out.println("44nd exception got caught m8");
+            System.out.println("44th exception got caught m8");
         }
     }
 

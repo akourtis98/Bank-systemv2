@@ -11,6 +11,7 @@ import static DB.DatabaseConnection.insertInto;
 import static DB.DatabaseConnection.myrs;
 import static DB.DatabaseConnection.prprdstmnt;
 import static DB.DatabaseConnection.removeFrom;
+import static DB.TransactionsLogFile.writeTransactions;
 import static bank.system.Withdraw.getUsrSlctd;
 import java.sql.SQLException;
 
@@ -25,6 +26,7 @@ public class DBWithdraw {
         try {
             insertTo(userTo, amount);
             removeFrom(userFrom, amount);
+            writeTransactions(userFrom, userTo, "withdrawed from", amount);
         } catch (Exception exc) {
             exc.printStackTrace();
         }

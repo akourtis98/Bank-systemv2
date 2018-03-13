@@ -63,6 +63,7 @@ public class Deposit {
         int c = sc.nextInt();
         if (DBDeposit.enoughBalance(c)){ //, 
             DepositTo(getCurrentname(),getUsrSlctd(), c);
+            System.out.println("changes have taken effect");
             shutdown(getType());
         }else{
           System.out.println("Not enough money in account!");  
