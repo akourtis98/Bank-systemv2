@@ -6,25 +6,23 @@
 package DB;
 
 import static DB.DatabaseConnection.conn;
-import static DB.DatabaseConnection.loginUserDataCheck;
+import static DB.DatabaseConnection.deleteFromDB;
 import static DB.DatabaseConnection.myrs;
 import static DB.DatabaseConnection.prprdstmnt;
 import java.sql.SQLException;
 
 /**
- * 
+ *
  * @author alexkourtis11
  */
-public class DBLoginCheck {
+public class DBDeleteUser {
 
-    public static boolean checkLoginData(String[] credentials) throws SQLException {
 
-        DatabaseConnection.openConnection();
+    public static boolean deleteUSer(String insertedName) throws SQLException {
         // create a stmnt
-        prprdstmnt = conn.prepareStatement(loginUserDataCheck);
-        prprdstmnt.setString(1, credentials[0]);
-        prprdstmnt.setString(2, credentials[1]);
-        myrs = prprdstmnt.executeQuery();
+        prprdstmnt = conn.prepareStatement(deleteFromDB);
+        prprdstmnt.setString(1, insertedName);
+        prprdstmnt.executeUpdate();
         boolean myrsHasNext = (myrs.next()) ? true : false;
         return myrsHasNext;
     }

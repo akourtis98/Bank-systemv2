@@ -5,24 +5,29 @@
  */
 package bank.system;
 
-import bank.system.Welcome;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.UnsupportedEncodingException;
+import java.sql.SQLException;
 /**
  *
  * @author alexkourtis11
  */
 public class Main {
-    protected static Welcome Welcome;
-    protected static Login Login;
-    public static MainMenu MainMenu;
-    
-    
-//    public static void main(String[] args) {
-//       
-//        System.out.println("Passed throguh main\n");
-//        Welcome.welcome();
-//        //select go back
-//        // or exit
-//    }
-    
-    
+	public static Welcome Welcome;
+	public static Login Login;
+	public static MainMenu MainMenu;
+	public static Main Main;
+
+	public static void main(String[] args) throws SQLException,
+	FileNotFoundException,
+	UnsupportedEncodingException,
+	IOException {
+		System.out.println("Welcome to our bank! \n");
+		Welcome.welcome();
+	}
+        
+        public final static void clearConsole() {// InterruptedException
+             System.out.print("\033[H\033[2J");
+}
 }

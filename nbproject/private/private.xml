@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/bank/system/Login.java</file>
-            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/DB/DBLoginCheck.java</file>
+            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/DB/DBDisplayAllForAdmin.java</file>
+            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/DB/DBDeposit.java</file>
+            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/DB/DBWithdraw.java</file>
             <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/DB/DatabaseConnection.java</file>
+            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/bank/system/Deposit.java</file>
+            <file>file:/home/alexkourtis11/Desktop/netbeansworkspace/Bank-system/src/bank/system/EditUser.java</file>
         </group>
     </open-files>
 </project-private>

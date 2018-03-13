@@ -24,47 +24,47 @@ import static java.time.temporal.TemporalQueries.localDate;
 public class TransactionsLogFile {
     private static DateTimeFormatter dtf;
     private static LocalDateTime localDateTime;
-    private static StringBuilder data =  new StringBuilder();
+    private static StringBuilder data = new StringBuilder();
 
-    
-    public static void getTransactions() throws FileNotFoundException, UnsupportedEncodingException{
-                
-		Statement myStmnt = null;
-		ResultSet myRs = null;
-                
-		try{
-                        DatabaseConnection.openConnection();
-			System.out.println("Getting data from table... please wait \n");
-			// create a stmnt
-			myStmnt = conn.createStatement();
-			
-			//exec query
-			myRs = myStmnt.executeQuery(selectAllTrans);                  
-                        while(myRs.next()){
-                            data.append("On " + myRs.getString("date") +" "+ myRs.getString("fromm") +" "+ myRs.getString("action") +" "+ myRs.getString("adverb")
-                            +" "+ myRs.getString("tom") +" "+ myRs.getString("amount"));
-                            data.append("\n");
-			}
-		
-                        }catch(Exception exc){
-                             exc.printStackTrace();
-                             System.out.println("error");
-                        }        
-			System.out.println("data: "  + "\n" + data);
-                        printOutInTxtFile();
+
+    public static void getTransactions() throws FileNotFoundException, UnsupportedEncodingException {
+
+        Statement myStmnt = null;
+        ResultSet myRs = null;
+
+        try {
+            DatabaseConnection.openConnection();
+            System.out.println("Getting data from table... please wait \n");
+            // create a stmnt
+            myStmnt = conn.createStatement();
+
+            //exec query
+            myRs = myStmnt.executeQuery(selectAllTrans);
+            while (myRs.next()) {
+                data.append("On " + myRs.getString("date") + " " + myRs.getString("fromm") + " " + myRs.getString("action") + " " + myRs.getString("adverb") +
+                    " " + myRs.getString("tom") + " " + myRs.getString("amount"));
+                data.append("\n");
+            }
+
+        } catch (Exception exc) {
+            exc.printStackTrace();
+            System.out.println("error");
+        }
+        System.out.println("data: " + "\n" + data);
+        printOutInTxtFile();
     }
-    
-                      
-                        private static void printOutInTxtFile() throws FileNotFoundException, UnsupportedEncodingException{
-                        getCurrentDate();
 
-                        PrintWriter writer = new PrintWriter("Transactions logs/data-for-"+dtf.format(localDateTime)+".txt", "UTF-8");
-                        writer.println(data);
-                        writer.close();
-                        }   
-                        
-                        private static void getCurrentDate(){
-                            dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm");
-                            localDateTime = localDateTime.now();
-                        }
+
+    private static void printOutInTxtFile() throws FileNotFoundException, UnsupportedEncodingException {
+        getCurrentDate();
+
+        PrintWriter writer = new PrintWriter("Transactions logs/data-for-" + dtf.format(localDateTime) + ".txt", "UTF-8");
+        writer.println(data);
+        writer.close();
+    }
+
+    private static void getCurrentDate() {
+        dtf = DateTimeFormatter.ofPattern("dd-MM-yyyy' at 'HH:mm");
+        localDateTime = localDateTime.now();
+    }
 }

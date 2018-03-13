@@ -16,17 +16,20 @@ import java.sql.SQLIntegrityConstraintViolationException;
  * @author alexkourtis11
  */
 public class DBCreateNewUser {
-   
-    public static void create(String uname, String pword){
-       try {
-                 prprdstmnt = conn.prepareStatement(createUser);
-                 prprdstmnt.setString(1, uname);
-                 prprdstmnt.setString(2, pword);
-                 prprdstmnt.executeUpdate();
+
+    public static boolean create(String uname, String pword) {
+        try {
+            prprdstmnt = conn.prepareStatement(createUser);
+            prprdstmnt.setString(1, uname);
+            prprdstmnt.setString(2, pword);
+            prprdstmnt.executeUpdate();
+            return true;
         } catch (SQLIntegrityConstraintViolationException e) {
-           System.out.println("Duplicates are not allowed");
+            System.out.println("Duplicates are not allowed!\nTry again!");
+            return false;
         } catch (SQLException e) {
-           System.out.println("connection error");
+            System.out.println("connection error");
+            return false;
         }
     }
 }
