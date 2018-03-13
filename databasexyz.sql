@@ -54,7 +54,7 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`id`, `uname`, `pword`, `amount`, `type`) VALUES
-(2, 'admin', 'admin', 10000000000, 'admin'),
+(2, 'admin', 'admin', 1000000, 'admin'),
 (15, 'user', 'user', 1500, 'user'),
 (16, 'user1', 'user1', 1500, 'user');
 
