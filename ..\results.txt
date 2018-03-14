@@ -1,4 +1,0 @@
-On 2018-03-15 alex deposited to john 500
-On 2018-03-18 john withdrawed from alex 600
-On 2018-03-30 alex asd asd asd 22
-
